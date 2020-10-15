@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: user-runner
+  namespace: test
+spec:
+  serviceAccountName: rawan-docker
+  taskRef:
+    name: user
+  params:
+  - name: IMAGE
+    value: "rawan005/user"
+  resources:
+    inputs:
+    - name: project-level3
+      resourceRef:
+        name: project-level3
