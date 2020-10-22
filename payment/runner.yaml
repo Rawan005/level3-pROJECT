@@ -12,6 +12,6 @@ spec:
     value: "rawan005/payment"
   resources:
     inputs:
-    - name: project-level3
+    - name: level3-project
       resourceRef:
         name: payment-re

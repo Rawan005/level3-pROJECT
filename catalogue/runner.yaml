@@ -12,6 +12,6 @@ spec:
     value: "rawan005/catalogue"
   resources:
     inputs:
-    - name: project-level3
+    - name: catalogue-src
       resourceRef:
-        name: catalogue
+        name: catalogue-src
