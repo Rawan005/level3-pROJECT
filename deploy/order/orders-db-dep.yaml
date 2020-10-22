@@ -5,7 +5,6 @@ metadata:
   name: orders-db
   labels:
     name: orders-db
-  namespace: test
 spec:
   selector:
     matchLabels:
@@ -22,6 +21,15 @@ spec:
         ports:
         - name: mongo
           containerPort: 27017
+        securityContext:
+          capabilities:
+            drop:
+              - all
+            add:
+              - CHOWN
+              - SETGID
+              - SETUID
+          readOnlyRootFilesystem: true
         volumeMounts:
         - mountPath: /tmp
           name: tmp-volume
