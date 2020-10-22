@@ -5,7 +5,6 @@ metadata:
   name: orders
   labels:
     name: orders
-  namespace: test
 spec:
   selector:
     matchLabels:
@@ -18,7 +17,7 @@ spec:
     spec:
       containers:
       - name: orders
-        image: rawan005/order
+        image: rawan005/orders
         env:
          - name: ZIPKIN
            value: zipkin.jaeger.svc.cluster.local
