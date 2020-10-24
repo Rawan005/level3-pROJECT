@@ -2,36 +2,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: queue-master
+  name: user
   labels:
-    name: queue-master
+    name: user
 spec:
   selector:
     matchLabels:
-      name: queue-master
+      name: user
   replicas: 1
   template:
     metadata:
       labels:
-        name: queue-master
+        name: user
     spec:
       containers:
-      - name: queue-master
-        image: rawan005/queuemaster
-        env:
-         - name: ZIPKIN
-           value: zipkin.jaeger.svc.cluster.local
-         - name: JAVA_OPTS
-           value: -Xms64m -Xmx128m -XX:PermSize=32m -XX:MaxPermSize=64m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom
+      - name: user
+        image: rawan005/user
         resources:
           limits:
             cpu: 300m
-            memory: 500Mi
+            memory: 100Mi
           requests:
-            cpu: 300m
-            memory: 500Mi
+            cpu: 100m
+            memory: 100Mi
         ports:
         - containerPort: 80
+        env:
+        - name: mongo
+          value: user-db:27017
         livenessProbe:
           httpGet:
             path: /health

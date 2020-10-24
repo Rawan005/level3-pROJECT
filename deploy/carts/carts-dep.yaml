@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: queue-master
+  name: carts
   labels:
-    name: queue-master
+    name: carts
 spec:
   selector:
     matchLabels:
-      name: queue-master
+      name: carts
   replicas: 1
   template:
     metadata:
       labels:
-        name: queue-master
+        name: carts
     spec:
       containers:
-      - name: queue-master
-        image: rawan005/queuemaster
+      - name: carts
+        image: rawan005/carts
         env:
          - name: ZIPKIN
            value: zipkin.jaeger.svc.cluster.local
@@ -31,7 +31,9 @@ spec:
             cpu: 300m
             memory: 500Mi
         ports:
-        - containerPort: 80
+        volumeMounts:
+        - mountPath: /tmp
+          name: tmp-volume
         livenessProbe:
           httpGet:
             path: /health
@@ -44,5 +46,9 @@ spec:
             port: 80
           initialDelaySeconds: 180
           periodSeconds: 3
+      volumes:
+        - name: tmp-volume
+          emptyDir:
+            medium: Memory
       nodeSelector:
         beta.kubernetes.io/os: linux
