@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: project-level3
+  name: carts-src
   namespace: test
 spec:
   type: git
@@ -9,4 +9,4 @@ spec:
     - name: revision
       value: main
     - name: url
-      value: https://github.com/Rawan005/project-level3
+      value: https://github.com/Rawan005/level3-project

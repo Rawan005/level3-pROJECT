@@ -1,17 +1,17 @@
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  name: e2e-tests-runner
+  name: carts-runner
   namespace: test
 spec:
   serviceAccountName: rawan-docker
   taskRef:
-    name: e2e-tests
+    name: carts
   params:
   - name: IMAGE
-    value: "rawan005/e2e-tests"
+    value: "rawan005/carts"
   resources:
     inputs:
     - name: project-level3
       resourceRef:
-        name: project-level3
+        name: carts-src

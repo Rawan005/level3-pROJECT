@@ -86,3 +86,4 @@ else
     puts red { failed_test.err.backtrace.join("\n") }
   end
 end
+
