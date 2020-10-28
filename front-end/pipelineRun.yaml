@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: front-end-pipelinerun 
+  namespace: test
+spec:
+  pipelineRef:
+    name: front-end-pipeline
+  resources:
+    - name: project-level3
+      resourceRef:
+        name: front-end-re
+  params:
+    - name: CONTEXT
+      value: "/workspace/project-level3/front-end"
+    - name: DOCKERFILE
+      value: "/workspace/project-level3/front-end/Dockerfile"
+    - name: pathToYamlFile
+      value: "project-level3/deploy/front-ed/front-end-dep.yaml"
+    - name: imageUrl
+      value: "rawan005/front-end"
+    - name: imageTag
+      value: "latest"
+    - name: IMAGE
+      value: "rawan005/front-end"
+      
+  serviceAccountName: rawan-docker
