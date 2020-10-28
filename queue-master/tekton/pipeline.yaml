@@ -3,7 +3,6 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: queue-master-pipeline
-  namespace: test
 spec:
   resources:
     - name: project-level3
