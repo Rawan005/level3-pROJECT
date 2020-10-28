@@ -1,0 +1,30 @@
+ 
+
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: load-test-pipelinerun 
+  namespace: test
+spec:
+  pipelineRef:
+    name: load-test-pipeline
+  resources:
+    - name: project-level3
+      resourceRef:
+        name: load-test-src
+  params:
+    - name: CONTEXT
+      value: "/workspace/project-level3/load-test"
+    - name: DOCKERFILE
+      value: "/workspace/project-level3/load-test/Dockerfile"
+    - name: pathToYamlFile
+      value: "project-level3/deploy/loadtest/load-test-dep.yaml"
+    - name: imageUrl
+      value: "rawan005/load-test"
+    - name: imageTag
+      value: "latest"
+    - name: IMAGE
+      value: "rawan005/load-test"
+      
+  serviceAccountName: rawan-docker
+
