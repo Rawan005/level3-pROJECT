@@ -1,3 +1,13 @@
+	k3d cluster create labs \
+	    -p 80:80@loadbalancer \
+	    -p 443:443@loadbalancer \
+	    -p 30000-32767:30000-32767@server[0] \
+	    -v /etc/machine-id:/etc/machine-id:ro \
+	    -v /var/log/journal:/var/log/journal:ro \
+	    -v /var/run/docker.sock:/var/run/docker.sock \
+	    --k3s-server-arg '--no-deploy=traefik' \
+	    --agents 3
+
 kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
 sudo apt update
 sudo apt install -y gnupg
