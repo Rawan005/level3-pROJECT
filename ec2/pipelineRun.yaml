@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: e2e-js-test-pipelinerun 
+spec:
+  pipelineRef:
+    name: e2e-js-test-pipeline
+  resources:
+    - name: project-level3
+      resourceRef:
+        name: e2e-js-test-src
+  params:
+    - name: imageUrl
+      value: "rawan005/e2e-js-test"
+    - name: imageTag
+      value: "latest"
+    - name: IMAGE
+      value: "rawan005/e2e-js-test"
+    - name: pathToYamlFile
+      value: "level3-project/deploy/dep-services.yaml"
+      
+  serviceAccountName: rawan-docker
