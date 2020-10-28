@@ -3,7 +3,6 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   name: user-db-pipelinerun 
-  namespace: test 
 spec:
   pipelineRef:
     name: user-db-pipeline
