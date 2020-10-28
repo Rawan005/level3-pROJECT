@@ -3,7 +3,6 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   name: queue-master-pipelinerun 
-  namespace: test
 spec:
   pipelineRef:
     name: queue-master-pipeline
