@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: shipment
+  name: shipping
   namespace: test
 spec:
   resources:
