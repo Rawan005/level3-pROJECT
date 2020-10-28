@@ -4,7 +4,6 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   name: load-test-pipelinerun 
-  namespace: test
 spec:
   pipelineRef:
     name: load-test-pipeline
