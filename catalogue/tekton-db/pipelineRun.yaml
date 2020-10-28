@@ -2,7 +2,6 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   name: catalogue-db-pipelinerun 
-  namespace: test
 spec:
   pipelineRef:
     name: catalogue-db-pipeline
