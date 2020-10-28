@@ -1,0 +1,28 @@
+
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: orders-pipelinerun 
+  namespace: test
+spec:
+  pipelineRef:
+    name: orders-pipeline
+  resources:
+    - name: project-level3
+      resourceRef:
+        name: orders-src
+  params:
+    - name: CONTEXT
+      value: "/workspace/project-level3/orders"
+    - name: DOCKERFILE
+      value: "/workspace/project-level3/orders/Dockerfile"
+    - name: pathToYamlFile
+      value: "project-level3/deploy/order/orders-dep.yaml"
+    - name: imageUrl
+      value: "rawan005/orders"
+    - name: imageTag
+      value: "latest"
+    - name: IMAGE
+      value: "rawan005/orders"
+      
+  serviceAccountName: rawan-docker
