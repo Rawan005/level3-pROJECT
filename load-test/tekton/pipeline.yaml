@@ -2,7 +2,6 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: load-test-pipeline
-  namespace: test
 spec:
   resources:
     - name: project-level3
