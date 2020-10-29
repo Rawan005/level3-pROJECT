@@ -9,22 +9,22 @@ spec:
   params:
     - name: IMAGE
       type: string
-      default: "awraad/e2e-js-test"
+      default: "rawan005/e2e-js-test"
     - name: DOCKERFILE
       type: string
-      default: "/workspace/project-level3/e2e-js-test/Dockerfile"
+      default: "/workspace/project-level3/ec2/Dockerfile"
     - name: CONTEXT
       type: string
-      default: "/workspace/project-level3/e2e-js-test"
+      default: "/workspace/project-level3/ec2"
     - name: imageUrl
       type: string
-      default: "awraad/e2e-js-test"
+      default: "rawan005/e2e-js-test"
     - name: imageTag
       type: string
       default: "latest"
     - name: pathToYamlFile
       type: string
-      default: "level3-project/deploy-files/dep-all-services.yaml"
+      default: "level3-project/deploy/dep-services.yaml"
   tasks:
   - name: build-push-image
     taskRef:
