@@ -1,6 +1,8 @@
 init: 
-	k create -f role.yaml -n test 
-	k create -f secret.yaml  -n test 
+	kubectl create -f role.yaml -n test 
+	kubectl create -f secret.yaml  -n test 
+	kubectl create -f serviceA.yaml -n test 
+	kubectl create -f rbac.yaml -n test 
 	kubectl create namespace test 
 	kubectl create namespace prod 
 	kubectl create namespace logging 
@@ -78,8 +80,8 @@ e2e-run:
 	kubectl create -f e2e-js-test/pipeline.yaml -n test
 	kubectl create -f e2e-js-test/pipelineRun.yaml -n test
 grafana:
-	cd grafana 
-	source grafana.sh
+	cd grafana &&
+	./grafana.sh
 elf:
-	cd elf 
-	 source elf.sh
+	cd elf &&
+	./elf.sh
