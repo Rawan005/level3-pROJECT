@@ -1,6 +1,10 @@
 init: 
 	k create -f role.yaml -n test 
-	  	k create -f secret.yaml  -n test 
+	k create -f secret.yaml  -n test 
+	kubectl create namespace test 
+	kubectl create namespace prod 
+	kubectl create namespace logging 
+	kubectl create namespace monitor
 front-end-run: 
 	kubectl create -f front-end/resource.yaml -n test
 	kubectl create -f front-end/task.yaml -n test
@@ -70,8 +74,12 @@ shipping-run:
 e2e-run: 
 	kubectl create -f e2e-js-test/resource.yaml -n test
 	kubectl create -f e2e-js-test/e2e-task-build-push.yaml -n test
-	kubectl create -f e2e-js-test/e2e-task-run.yaml -n test
-	kubectl create -f e2e-js-test/e2e-task-dep.yaml -n test
-	kubectl apply -f e2e-js-test/prod-task-dep.yaml -n test 
+	kubectl create -f e2e-js-test/e2e-task-run.yaml -n test 
 	kubectl create -f e2e-js-test/pipeline.yaml -n test
 	kubectl create -f e2e-js-test/pipelineRun.yaml -n test
+grafana:
+	cd grafana 
+	source grafana.sh
+elf:
+	cd elf 
+	 source elf.sh

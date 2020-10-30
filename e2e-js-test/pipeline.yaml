@@ -37,17 +37,3 @@ spec:
       inputs:
         - name: project-level3
           resource: project-level3
-  - name: run-test
-    taskRef:
-      name: e2e-task-run
-    runAfter:
-      - build-push-image
-    params:
-      - name: imageUrl
-        value: "$(params.imageUrl)"
-      - name: imageTag
-        value: "$(params.im`ageTag)"
-    resources:
-      inputs:
-        - name: project-level3
-          resource: project-level3
