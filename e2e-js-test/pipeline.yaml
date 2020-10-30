@@ -12,10 +12,10 @@ spec:
       default: "rawan005/e2e-js-test"
     - name: DOCKERFILE
       type: string
-      default: "/workspace/project-level3/ec2/Dockerfile"
+      default: "/workspace/project-level3/e2e-js-test/Dockerfile"
     - name: CONTEXT
       type: string
-      default: "/workspace/project-level3/ec2"
+      default: "/workspace/project-level3/e2e-js-test"
     - name: imageUrl
       type: string
       default: "rawan005/e2e-js-test"
@@ -49,7 +49,7 @@ spec:
       - name: imageUrl
         value: "$(params.imageUrl)"
       - name: imageTag
-        value: "$(params.imageTag)"
+        value: "$(params.im`ageTag)"
     resources:
       inputs:
         - name: project-level3

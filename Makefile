@@ -1,4 +1,8 @@
+init: 
+	k create -f role.yaml -n test 
+	  	k create -f secret.yaml  -n test 
 front-end-run: 
+	kubectl create -f front-end/resource.yaml -n test
 	kubectl create -f front-end/task.yaml -n test
 	kubectl create -f front-end/task-dep.yaml -n test
 	kubectl create -f front-end/pipeline.yaml -n test
@@ -64,9 +68,10 @@ shipping-run:
 	kubectl create -f shipping/pipeline.yaml -n test
 	kubectl create -f shipping/pipelineRun.yaml -n test
 e2e-run: 
-	kubectl create -f ec2/resource.yaml -n test
-	kubectl create -f ec2/e2e-task-build-push.yaml -n test
-	kubectl create -f ec2/e2e-task-run.yaml -n test
-	kubectl create -f ec2/e2e-task-dep.yaml -n test
-	kubectl create -f ec2/pipeline.yaml -n test
-	kubectl create -f ec2/pipelineRun.yaml -n test
+	kubectl create -f e2e-js-test/resource.yaml -n test
+	kubectl create -f e2e-js-test/e2e-task-build-push.yaml -n test
+	kubectl create -f e2e-js-test/e2e-task-run.yaml -n test
+	kubectl create -f e2e-js-test/e2e-task-dep.yaml -n test
+	kubectl apply -f e2e-js-test/prod-task-dep.yaml -n test 
+	kubectl create -f e2e-js-test/pipeline.yaml -n test
+	kubectl create -f e2e-js-test/pipelineRun.yaml -n test
